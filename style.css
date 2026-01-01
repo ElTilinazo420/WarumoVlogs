@@ -1,63 +1,11 @@
-body {
-    margin: 0;
-    background-color: #ffffff;
-    color: #000000;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* LOGIN */
-.login {
-    text-align: center;
-}
-
-.login input {
-    padding: 12px;
-    width: 260px;
-    font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 6px;
-}
-
-.login button {
-    margin-top: 15px;
-    padding: 12px 30px;
-    font-size: 16px;
-    border: 2px solid #000;
-    background: white;
-    cursor: pointer;
-}
-
-.login button:hover {
-    background: black;
-    color: white;
-}
-
-#error {
-    color: red;
-    margin-top: 10px;
-}
-
-/* CONTENIDO */
-.content {
-    display: none;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-}
-
-/* VIDEO */
 .video-container {
     position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    border: 3px solid #000;
+    width: 100%;          /* se adapta al ancho del contenedor */
+    padding-top: 56.25%;  /* mantiene proporción 16:9 */
+    border: 6px solid #000;
     border-radius: 12px;
-    margin-bottom: 40px;
     overflow: hidden;
+    margin-bottom: 40px;
 }
 
 .video-container iframe {
@@ -68,22 +16,4 @@ body {
     height: 100%;
     border: none;
 }
-
-/* CATÁLOGO */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card img {
-    width: 100%;
-    border: 3px solid #000;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.card img:hover {
-    transform: scale(1.05);
-}
+ 
