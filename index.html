@@ -5,172 +5,73 @@
     <title>Mi Vlog Privado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            background-color: #0e0e0e;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* LOGIN Y CONTENIDO */
-        .login, .content {
-            width: 90%;
-            max-width: 1000px;
-            text-align: center;
-        }
-
-        input {
-            padding: 12px;
-            width: 260px;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 12px 25px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: #ff0033;
-            color: white;
-        }
-
-        .error {
-            color: #ff5555;
-            margin-top: 10px;
-        }
-
-        /* VIDEO */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: black;
-        }
-
-        iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: none;
-        }
-
-        /* CATÁLOGO */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            cursor: pointer;
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-
-        .card img:hover {
-            transform: scale(1.05);
-        }
-
-        .card p {
-            margin-top: 8px;
-            font-size: 14px;
-            color: #cccccc;
-        }
-
-        .content {
-            display: none;
-        }
-    </style>
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login" id="login">
-    <h1>Acceso privado</h1>
-    <p>Introduce la contraseña para acceder al catálogo</p>
-
-    <input type="password" id="password" placeholder="Contraseña">
-    <br>
-    <button onclick="login()">Entrar</button>
-
-    <div class="error" id="error"></div>
-</div>
-
-<!-- CONTENIDO -->
-<div class="content" id="content">
-    <h1>Mi Vlog</h1>
-    <p>Catálogo privado de videos</p>
-
-    <!-- REPRODUCTOR -->
-    <div class="video-container">
-        <iframe id="player"
-            src="https://www.youtube.com/embed/4T5mVVoXAb4"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
+    <!-- LOGIN -->
+    <div class="login" id="login">
+        <h1>Acceso privado</h1>
+        <p>Introduce la contraseña para ver los videos</p>
+        <input type="password" id="password" placeholder="Contraseña">
+        <br>
+        <button onclick="checkPassword()">Entrar</button>
+        <p id="error"></p>
     </div>
 
-    <!-- CATÁLOGO DE 3 VIDEOS -->
-    <div class="grid">
-        <!-- VIDEO 1 -->
-        <div class="card" onclick="playVideo('4T5mVVoXAb4')">
-            <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg">
-            <p>Vlog 1 – Día normal</p>
+    <!-- CONTENIDO -->
+    <div class="content" id="content">
+        <h1>Mi Vlog</h1>
+        <p>Contenido exclusivo</p>
+
+        <!-- Video principal -->
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/4T5mVVoXAb4"
+                allowfullscreen>
+            </iframe>
         </div>
 
-        <!-- VIDEO 2 -->
-        <div class="card" onclick="playVideo('dQw4w9WgXcQ')">
-            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
-            <p>Vlog 2 – Especial</p>
-        </div>
+        <!-- Catálogo -->
+        <h2>Catálogo</h2>
+        <div class="grid">
+            <div class="card">
+                <a href="https://www.youtube.com/embed/4T5mVVoXAb4" target="_self">
+                    <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg">
+                </a>
+            </div>
 
-        <!-- VIDEO 3 -->
-        <div class="card" onclick="playVideo('3JZ_D3ELwOQ')">
-            <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg">
-            <p>Vlog 3 – Random</p>
+            <div class="card">
+                <a href="https://www.youtube.com/embed/dQw4w9WgXcQ" target="_self">
+                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="https://www.youtube.com/embed/9bZkp7q19f0" target="_self">
+                    <img src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg">
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    const PASSWORD = "1234"; // 🔑 CAMBIA AQUÍ TU CONTRASEÑA
+    <!-- JS -->
+    <script>
+        const PASSWORD = "vlog123";
 
-    function login() {
-        const pass = document.getElementById("password").value;
-        const error = document.getElementById("error");
+        function checkPassword() {
+            const input = document.getElementById("password").value;
+            const error = document.getElementById("error");
 
-        if (pass === PASSWORD) {
-            document.getElementById("login").style.display = "none";
-            document.getElementById("content").style.display = "block";
-        } else {
-            error.textContent = "Contraseña incorrecta";
+            if (input === PASSWORD) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                error.textContent = "Contraseña incorrecta";
+            }
         }
-    }
-
-    function playVideo(id) {
-        document.getElementById("player").src =
-            "https://www.youtube.com/embed/" + id;
-    }
-</script>
+    </script>
 
 </body>
 </html>
