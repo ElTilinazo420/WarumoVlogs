@@ -69,7 +69,7 @@ body {
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.25%;  /* mantiene proporción 16:9 igual que antes */
+    padding-top: 56.25%;  /* mantiene proporción 16:9 */
     border: 6px solid #000; /* marco negro grueso */
     border-radius: 12px;
     overflow: hidden;
@@ -104,4 +104,3 @@ body {
 .card img:hover {
     transform: scale(1.05);
 }
-
