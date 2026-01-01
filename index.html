@@ -2,77 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Vlog Privado</title>
+    <title>Warumo Vlogs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS externo -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* LOGO/TITULO COMO IMAGEN */
+        .logo {
+            max-width: 400px;
+            width: 80%;
+            height: auto;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* sombra ligera */
+            border-radius: 10px; /* opcional, bordes redondeados */
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            padding-top: 56.25%;
+            border: 6px solid #000;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- LOGIN -->
-    <div class="login" id="login">
-        <h1>Acceso privado</h1>
-        <p>Introduce la contraseña para ver los videos</p>
-        <input type="password" id="password" placeholder="Contraseña">
-        <br>
-        <button onclick="checkPassword()">Entrar</button>
-        <p id="error"></p>
+    <!-- LOGO COMO TITULO -->
+    <img src="images/logo.png" alt="Warumo Vlogs" class="logo">
+
+    <!-- VIDEO DE PRUEBA -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/4T5mVVoXAb4" allowfullscreen></iframe>
     </div>
-
-    <!-- CONTENIDO -->
-    <div class="content" id="content">
-        <h1>Mi Vlog</h1>
-        <p>Contenido exclusivo</p>
-
-        <!-- Video principal -->
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/4T5mVVoXAb4"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <!-- Catálogo -->
-        <h2>Catálogo</h2>
-        <div class="grid">
-            <div class="card">
-                <a href="https://www.youtube.com/embed/4T5mVVoXAb4" target="_self">
-                    <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg">
-                </a>
-            </div>
-
-            <div class="card">
-                <a href="https://www.youtube.com/embed/dQw4w9WgXcQ" target="_self">
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
-                </a>
-            </div>
-
-            <div class="card">
-                <a href="https://www.youtube.com/embed/9bZkp7q19f0" target="_self">
-                    <img src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- JS -->
-    <script>
-        const PASSWORD = "vlog123";
-
-        function checkPassword() {
-            const input = document.getElementById("password").value;
-            const error = document.getElementById("error");
-
-            if (input === PASSWORD) {
-                document.getElementById("login").style.display = "none";
-                document.getElementById("content").style.display = "block";
-            } else {
-                error.textContent = "Contraseña incorrecta";
-            }
-        }
-    </script>
 
 </body>
 </html>
-
