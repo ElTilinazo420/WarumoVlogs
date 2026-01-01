@@ -38,3 +38,38 @@
         <div class="grid">
             <div class="card" onclick="playVideo('4T5mVVoXAb4')">
                 <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg" alt="Vlog 1">
+            </div>
+            <div class="card" onclick="playVideo('dQw4w9WgXcQ')">
+                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Vlog 2">
+            </div>
+            <div class="card" onclick="playVideo('9bZkp7q19f0')">
+                <img src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg" alt="Vlog 3">
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        const PASSWORD = "vlog123"; // 🔑 Cambia aquí tu contraseña
+
+        function checkPassword() {
+            const input = document.getElementById("password").value;
+            const error = document.getElementById("error");
+
+            if (input === PASSWORD) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                error.textContent = "Contraseña incorrecta";
+            }
+        }
+
+        function playVideo(id) {
+            document.getElementById("player").src =
+                "https://www.youtube.com/embed/" + id;
+        }
+    </script>
+
+</body>
+</html>
+
