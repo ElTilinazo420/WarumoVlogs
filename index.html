@@ -50,17 +50,18 @@
 
     <!-- JS -->
     <script>
-        const PASSWORD = "vlog123"; // 🔑 Cambia aquí tu contraseña
+        const PASSWORD = "vlog123"; // 🔑 tu contraseña
 
         function checkPassword() {
-            const input = document.getElementById("password").value;
+            const input = document.getElementById("password").value.trim();
             const error = document.getElementById("error");
 
             if (input === PASSWORD) {
                 document.getElementById("login").style.display = "none";
                 document.getElementById("content").style.display = "block";
+                error.textContent = "";
             } else {
-                error.textContent = "Contraseña incorrecta";
+                error.textContent = "❌ Contraseña incorrecta";
             }
         }
 
@@ -68,6 +69,13 @@
             document.getElementById("player").src =
                 "https://www.youtube.com/embed/" + id;
         }
+
+        // Permite presionar "Enter" en el input de contraseña
+        document.getElementById("password").addEventListener("keyup", function(e) {
+            if (e.key === "Enter") {
+                checkPassword();
+            }
+        });
     </script>
 
 </body>
