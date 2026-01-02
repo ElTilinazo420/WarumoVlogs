@@ -4,79 +4,98 @@
     <meta charset="UTF-8">
     <title>Warumo Vlogs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- LOGIN -->
-    <div class="login" id="login">
-        <p>Introduce la contraseña para acceder al catálogo de videos:</p>
-        <input type="password" id="password" placeholder="Contraseña">
-        <br>
-        <button onclick="checkPassword()">Entrar</button>
-        <p id="error"></p>
-    </div>
+<!-- LOGIN -->
+<section class="login" id="login">
+    <p>Introduce la contraseña para acceder</p>
+    <input type="password" id="password" placeholder="Contraseña">
+    <br>
+    <button onclick="checkPassword()">Entrar</button>
+    <p id="error"></p>
+</section>
 
-    <!-- CONTENIDO -->
-    <div class="content" id="content">
-
-        <!-- LOGO/TITULO -->
+<!-- CATÁLOGO -->
+<main class="catalog" id="catalog">
+    <header>
         <img src="images/warumovlogs.png" alt="Warumo Vlogs" class="logo">
+        <h2>Catálogo de Vlogs</h2>
+    </header>
 
-        <!-- VIDEO PRINCIPAL -->
-        <div class="video-container">
-            <iframe id="player"
-                src="https://www.youtube.com/embed/4T5mVVoXAb4"
-                allowfullscreen>
-            </iframe>
+    <div class="grid">
+        <!-- 10 VIDEOS -->
+        <div class="card" onclick="openPlayer('4T5mVVoXAb4')">
+            <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg">
         </div>
-
-        <!-- CATÁLOGO DE VIDEOS -->
-        <h2>Catálogo</h2>
-        <div class="grid">
-            <div class="card" onclick="playVideo('4T5mVVoXAb4')">
-                <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg" alt="Vlog 1">
-            </div>
-            <div class="card" onclick="playVideo('dQw4w9WgXcQ')">
-                <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Vlog 2">
-            </div>
-            <div class="card" onclick="playVideo('9bZkp7q19f0')">
-                <img src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg" alt="Vlog 3">
-            </div>
+        <div class="card" onclick="openPlayer('dQw4w9WgXcQ')">
+            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('9bZkp7q19f0')">
+            <img src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('3JZ_D3ELwOQ')">
+            <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('L_jWHffIx5E')">
+            <img src="https://img.youtube.com/vi/L_jWHffIx5E/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('hTWKbfoikeg')">
+            <img src="https://img.youtube.com/vi/hTWKbfoikeg/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('kJQP7kiw5Fk')">
+            <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('RgKAFK5djSk')">
+            <img src="https://img.youtube.com/vi/RgKAFK5djSk/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('OPf0YbXqDm0')">
+            <img src="https://img.youtube.com/vi/OPf0YbXqDm0/hqdefault.jpg">
+        </div>
+        <div class="card" onclick="openPlayer('fRh_vgS2dFE')">
+            <img src="https://img.youtube.com/vi/fRh_vgS2dFE/hqdefault.jpg">
         </div>
     </div>
+</main>
 
-    <!-- JS -->
-    <script>
-        const PASSWORD = "vlog123"; // 🔑 tu contraseña
+<!-- REPRODUCTOR -->
+<section class="player-section" id="playerSection">
+    <button class="back" onclick="backToCatalog()">← Volver al catálogo</button>
 
-        function checkPassword() {
-            const input = document.getElementById("password").value.trim();
-            const error = document.getElementById("error");
+    <div class="video-container">
+        <iframe id="player" allowfullscreen></iframe>
+    </div>
+</section>
 
-            if (input === PASSWORD) {
-                document.getElementById("login").style.display = "none";
-                document.getElementById("content").style.display = "block";
-                error.textContent = "";
-            } else {
-                error.textContent = "❌ Contraseña incorrecta";
-            }
-        }
+<script>
+const PASSWORD = "vlog123";
 
-        function playVideo(id) {
-            document.getElementById("player").src =
-                "https://www.youtube.com/embed/" + id;
-        }
+function checkPassword() {
+    const input = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
-        // Permite presionar "Enter" en el input de contraseña
-        document.getElementById("password").addEventListener("keyup", function(e) {
-            if (e.key === "Enter") {
-                checkPassword();
-            }
-        });
-    </script>
+    if (input === PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("catalog").style.display = "block";
+    } else {
+        error.textContent = "Contraseña incorrecta";
+    }
+}
+
+function openPlayer(id) {
+    document.getElementById("catalog").style.display = "none";
+    document.getElementById("playerSection").style.display = "block";
+    document.getElementById("player").src =
+        "https://www.youtube.com/embed/" + id;
+}
+
+function backToCatalog() {
+    document.getElementById("player").src = "";
+    document.getElementById("playerSection").style.display = "none";
+    document.getElementById("catalog").style.display = "block";
+}
+</script>
 
 </body>
 </html>
