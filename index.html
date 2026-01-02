@@ -18,14 +18,14 @@
 </section>
 
 <!-- CATÁLOGO -->
-<main class="catalog" id="catalog">
+<main class="catalog" id="catalog" style="display:none;">
     <header>
         <img src="images/warumovlogs.png" alt="Warumo Vlogs" class="logo">
         <h2>Catálogo de Vlogs</h2>
     </header>
 
     <div class="grid">
-        <!-- 10 VIDEOS -->
+        <!-- 10 videos -->
         <div class="card" onclick="openPlayer('4T5mVVoXAb4')">
             <img src="https://img.youtube.com/vi/4T5mVVoXAb4/hqdefault.jpg">
         </div>
@@ -59,8 +59,8 @@
     </div>
 </main>
 
-<!-- REPRODUCTOR -->
-<section class="player-section" id="playerSection">
+<!-- PLAYER -->
+<section class="player-section" id="playerSection" style="display:none;">
     <button class="back" onclick="backToCatalog()">← Volver al catálogo</button>
 
     <div class="video-container">
@@ -78,8 +78,9 @@ function checkPassword() {
     if (input === PASSWORD) {
         document.getElementById("login").style.display = "none";
         document.getElementById("catalog").style.display = "block";
+        error.textContent = "";
     } else {
-        error.textContent = "Contraseña incorrecta";
+        error.textContent = "❌ Contraseña incorrecta";
     }
 }
 
